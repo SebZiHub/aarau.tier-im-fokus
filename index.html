@@ -4,10 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Tier im Fokus | Aarau</title>
+    <!-- BOOTSTRAP AND RELATED TOOLS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- VUEJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <!-- ADDITIONAL CSS-->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -17,89 +21,34 @@
     <![endif]-->
   </head>
   <body>
-    <div class="wrapper">
+    <div class="wrapper" id="app">
       <header>
         <h1>Tier im Fokus | Aarau</h1>
         <p>Aktionen der Regiogruppe Aarau</p>
       </header>
       <section>
         <div class="container">
-		<!--ENTRY START-->
-		<br />
-		<div class="row">
-			<div class="col-2">
-				<h1><span class="badge badge-secondary">29</span></h1>
-				<p>FEB<p>
+                <!--ENTRY START-->
+		<template v-for="event in eventData">			
+			<br />
+			<div class="row">
+				<div class="col-2">
+					<h1><span class="badge badge-secondary">{{ event.dayNo }}</span></h1>
+					<p>{{ event.monthStr }}<p>
+				</div>
+				<div class="col-10">
+					<h3 class="text-uppercase"><strong>{{ event.name }}</strong></h3>
+					<ul class="list-inline">
+				    		<li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> {{ event.dayStr }}</li>
+						<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ event.timeStr }}</li>
+						<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ event.location }}</li>
+					</ul>
+					<p>{{ event.description }}</p>
+				</div>
 			</div>
-			<div class="col-10">
-				<h3 class="text-uppercase"><strong>Standaktion</strong></h3>
-				<ul class="list-inline">
-				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Samstag</li>
-					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 09:00-17:00</li>
-					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Hintere Vorstadt</li>
-				</ul>
-				<p>Anmeldung via Doodle folgt.</p>
-			</div>
-		</div>
-		<br />
-		<!--ENTRY END-->
-		<!--ENTRY START-->
-		<br />
-		<div class="row">
-			<div class="col-2">
-				<h1><span class="badge badge-secondary">12</span></h1>
-				<p>MÄR<p>
-			</div>
-			<div class="col-10">
-				<h3 class="text-uppercase"><strong>Meet & Eat</strong></h3>
-				<ul class="list-inline">
-				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Donnerstag</li>
-					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 18:30</li>
-					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Max-Moriz</li>
-				</ul>
-				<p>Anmeldung via Doodle folgt.</p>
-			</div>
-		</div>
-		<br />
-		<!--ENTRY END-->
-		<!--ENTRY START-->
-		<br />
-		<div class="row">
-			<div class="col-2">
-				<h1><span class="badge badge-secondary">28</span></h1>
-				<p>MÄR<p>
-			</div>
-			<div class="col-10">
-				<h3 class="text-uppercase"><strong>Standaktion</strong></h3>
-				<ul class="list-inline">
-				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Samstag</li>
-					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 09:00-17:00</li>
-					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Hintere Vorstadt</li>
-				</ul>
-				<p>Anmeldung via Doodle folgt.</p>
-			</div>
-		</div>
-		<br />
-		<!--ENTRY END-->
-		<!--ENTRY START-->
-		<br />
-		<div class="row">
-			<div class="col-2">
-				<h1><span class="badge badge-secondary">18</span></h1>
-				<p>APR<p>
-			</div>
-			<div class="col-10">
-				<h3 class="text-uppercase"><strong>Standaktion</strong></h3>
-				<ul class="list-inline">
-				    <li class="list-inline-item"><i class="fa fa-calendar-o" aria-hidden="true"></i> Samstag</li>
-					<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> 09:00-17:00</li>
-					<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> Hintere Vorstadt</li>
-				</ul>
-				<p>Anmeldung via Doodle folgt.</p>
-			</div>
-		</div>
-		<br />
-		<!--ENTRY END-->
+			<br />
+		</template>
+                <!--ENTRY END-->
 	</div>
       </section>
       <footer>
@@ -107,5 +56,18 @@
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+    <script>
+    var app = new Vue({
+	el: '#app',
+    	data: {
+		eventData: [
+			{ dayNo: "29", monthStr: "FEB", name: "Standaktion", dayStr: "Samstag", timeStr: "09:00-17:00", location: "Hintere Vorstadt", description: "Anmeldung via Doodle folgt." },
+			{ dayNo: "12", monthStr: "MÄR", name: "Meet & Eat", dayStr: "Donnerstag", timeStr: "18:30", location: "Max-Moriz", description: "Anmeldung via Doodle folgt." },
+			{ dayNo: "28", monthStr: "MÄR", name: "Standaktion", dayStr: "Samstag", timeStr: "09:00-17:00", location: "Hintere Vorstadt", description: "Anmeldung via Doodle folgt." },
+			{ dayNo: "18", monthStr: "APR", name: "Standaktion", dayStr: "Samstag", timeStr: "09:00-17:00", location: "Hintere Vorstadt", description: "Anmeldung via Doodle folgt." }
+		]
+        }
+    });
+    </script>
   </body>
 </html>
