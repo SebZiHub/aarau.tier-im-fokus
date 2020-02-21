@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- VUEJS -->
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
     <!-- ADDITIONAL CSS-->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -43,7 +44,7 @@
 						<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ event.timeStr }}</li>
 						<li class="list-inline-item"><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ event.location }}</li>
 					</ul>
-					<p>{{ event.description }}</p>
+					<span v-html="event.description"></span>
 				</div>
 			</div>
 			<br />
@@ -60,11 +61,13 @@
     var app = new Vue({
 	el: '#app',
     	data: {
+		templateButton: "<form action='https://doodle.com/poll/8xisahwmu2xqxmqu' target='_blank'><input type='submit' class='btn btn-block btn-primary' value='Anmelden'></form>",
+                templateDescription: "<p>Anmeldung via Doodle folgt.</p>",
 		eventData: [
-			{ dayNo: "29", monthStr: "FEB", name: "Standaktion", dayStr: "Samstag", timeStr: "09:00-17:00", location: "Hintere Vorstadt", description: "Anmeldung via Doodle folgt." },
-			{ dayNo: "12", monthStr: "MÄR", name: "Meet & Eat", dayStr: "Donnerstag", timeStr: "18:30", location: "Max-Moriz", description: "Anmeldung via Doodle folgt." },
-			{ dayNo: "28", monthStr: "MÄR", name: "Standaktion", dayStr: "Samstag", timeStr: "09:00-17:00", location: "Hintere Vorstadt", description: "Anmeldung via Doodle folgt." },
-			{ dayNo: "18", monthStr: "APR", name: "Standaktion", dayStr: "Samstag", timeStr: "09:00-17:00", location: "Hintere Vorstadt", description: "Anmeldung via Doodle folgt." }
+			{ dayNo: "29", monthStr: "FEB", name: "Standaktion", dayStr: "Samstag", timeStr: "09:00-17:00", location: "Hintere Vorstadt", description: "<form action='https://doodle.com/poll/8xisahwmu2xqxmqu' target='_blank'><input type='submit' class='btn btn-block btn-primary' value='Anmelden'></form>" },
+			{ dayNo: "12", monthStr: "MÄR", name: "Meet & Eat", dayStr: "Donnerstag", timeStr: "18:30", location: "Max-Moriz", description: "<p>Anmeldung via Doodle folgt.</p>" },
+			{ dayNo: "28", monthStr: "MÄR", name: "Standaktion", dayStr: "Samstag", timeStr: "09:00-17:00", location: "Hintere Vorstadt", description: "<p>Anmeldung via Doodle folgt.</p>" },
+			{ dayNo: "18", monthStr: "APR", name: "Standaktion", dayStr: "Samstag", timeStr: "09:00-17:00", location: "Hintere Vorstadt", description: "<p>Anmeldung via Doodle folgt.</p>" }
 		]
         }
     });
