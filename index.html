@@ -61,14 +61,13 @@
     var app = new Vue({
 	el: '#app',
     	data: {
+		templateEventEntry: "{ dayNo: "19", monthStr: "DEZ", name: "Standaktion", dayStr: "Samstag", timeStr: "10:30-16:30", location: "Igelweid", description: "<p>Anmeldung via Doodle folgt.</p>" }",
 		templateButtonRegister: "<form action='https://doodle.com/poll/8xisahwmu2xqxmqu' target='_blank'><input type='submit' class='btn btn-block btn-primary' value='Anmelden'></form>",
                 templateDescriptionPending: "<p>Anmeldung via Doodle folgt.</p>",
 		templateEventCancelled: "<p>EVENT WURDE ABGESAGT!</p>",
 		eventData: [
-			{ dayNo: "30", monthStr: "MAI", name: "Standaktion", dayStr: "Samstag", timeStr: "10:30-16:30", location: "Igelweid", description: "<p>EVENT WURDE ABGESAGT!</p>" },
-			{ dayNo: "26", monthStr: "SEP", name: "Standaktion", dayStr: "Samstag", timeStr: "10:30-16:30", location: "Igelweid", description: "<p>Anmeldung via Doodle folgt.</p>" },
-			{ dayNo: "31", monthStr: "OKT", name: "Standaktion", dayStr: "Samstag", timeStr: "10:30-16:30", location: "Igelweid", description: "<p>Anmeldung via Doodle folgt.</p>" },
-			{ dayNo: "19", monthStr: "DEZ", name: "Standaktion", dayStr: "Samstag", timeStr: "10:30-16:30", location: "Igelweid", description: "<p>Anmeldung via Doodle folgt.</p>" }
+			{ dayNo: "26", monthStr: "SEP", name: "Flyeraktion", dayStr: "Samstag", timeStr: "12:00-15:30", location: "Igelweid", description: "<form action='https://doodle.com/poll/rqc6bxgm3avde3yz' target='_blank'><input type='submit' class='btn btn-block btn-primary' value='Anmelden'></form>" },
+			{ dayNo: "03", monthStr: "OKT", name: "Hundeherbst", dayStr: "Samstag", timeStr: "09:30-17:00", location: "Suhr", description: "<form action='https://doodle.com/poll/6mnind8vitb7mx8a' target='_blank'><input type='submit' class='btn btn-block btn-primary' value='Anmelden'></form>" },
 		]
         }
     });
