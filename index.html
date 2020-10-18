@@ -32,7 +32,7 @@
                 <!--ENTRY START-->
 		<template v-for="event in eventData">			
 			<br />
-			<div class="row">
+			<div class="row" v-if="eventIsCurrent(event.eDate)">
 				<div class="col-2">
 					<h1><span class="badge badge-secondary">{{ event.dayNo }}</span></h1>
 					<p>{{ event.monthStr }}<p>
@@ -61,13 +61,21 @@
     var app = new Vue({
 	el: '#app',
     	data: {
-		templateEventEntry: '{ dayNo: "19", monthStr: "DEZ", name: "Standaktion", dayStr: "Samstag", timeStr: "10:30-16:30", location: "Igelweid", description: "<p>Anmeldung via Doodle folgt.</p>" }',
-		templateButtonRegister: "<form action='https://doodle.com/poll/8xisahwmu2xqxmqu' target='_blank'><input type='submit' class='btn btn-block btn-primary' value='Anmelden'></form>",
+		templateEventEntry: '{ eDate: "YYYY-MM-DD", dayNo: "DD", monthStr: "STR", name: "Standaktion", dayStr: "Samstag", timeStr: "10:30-16:30", location: "Igelweid", description: "<p>Anmeldung via Doodle folgt.</p>" }',
+		templateButtonRegister: "<form action='https://doodle.com/poll/XXXXXXXX' target='_blank'><input type='submit' class='btn btn-block btn-primary' value='Anmelden'></form>",
                 templateDescriptionPending: "<p>Anmeldung via Doodle folgt.</p>",
 		templateEventCancelled: "<p>EVENT WURDE ABGESAGT!</p>",
+		currentDate: new Date().setHours(0, 0, 0, 0),
 		eventData: [
-			{ dayNo: "31", monthStr: "OKT", name: "Flyeraktion", dayStr: "Samstag", timeStr: "12:00-15:30", location: "Kasinogarten", description: "<form action='https://doodle.com/poll/4cz3v49uhqcgpinx' target='_blank'><input type='submit' class='btn btn-block btn-primary' value='Anmelden'></form>" }
+			{ eDate: "2020-10-31", dayNo: "31", monthStr: "OKT", name: "Flyeraktion", dayStr: "Samstag", timeStr: "12:00-15:30", location: "Kasinogarten", description: "<form action='https://doodle.com/poll/4cz3v49uhqcgpinx' target='_blank'><input type='submit' class='btn btn-block btn-primary' value='Anmelden'></form>" }
 		]
+        },
+        methods: {
+        	eventIsCurrent: function (eventDate) {
+        		var eDateParts = eventDate.split('-');
+        		var eDateObj = new Date(eDateParts[0], eDateParts[1] - 1, eDateParts[2]);
+        		return this.currentDate <= eDateObj.getTime(); // getTime implicit on currentDate
+        	}
         }
     });
     </script>
